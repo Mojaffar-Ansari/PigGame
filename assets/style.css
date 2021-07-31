@@ -223,6 +223,7 @@ main{
         display: flex;
         justify-content: center;
         width: 95vw;
+        height: 95vh;
     }
 
     .player{
@@ -254,8 +255,8 @@ main{
 }
 @media screen and (max-width:280px) {
     main{
-        width: 100%;
-        height: 100%;
+        width: 98vw;
+        height: 98vh;
     }
 
     #name--0{
