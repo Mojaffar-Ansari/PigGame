@@ -9,6 +9,24 @@
   </head>
   <body>
     <main>
+      <!-- Modal window -->
+      <div class="modal hidden">
+        <button class="close-modal">&times;</button>
+        <h1>Gameplay</h1>
+         <br>
+        <p class="modal-para">Each turn, a player repeatedly rolls a die until either a 1 is rolled or the player decides to "hold": <br>  <br>
+          <ul class="modal-para">
+            <li>If the player rolls a 1, they score nothing and it becomes the next player's turn.</li> <br>
+            <li>If the player rolls any other number, it is added to their turn total and the player's turn continues.</li> <br>
+            <li>If a player chooses to "hold", their turn total is added to their score, and it becomes the next player's turn.</li>
+          </ul> <br> <br>
+
+          <span class="modal-para">The first player to score 100 or more points wins.</span> <br> <br>
+          <p class="modal-para">
+            For example, the first player, Donald, begins a turn with a roll of 5. Donald could hold and score 5 points, but chooses to roll again. Donald rolls a 2, and could hold with a turn total of 7 points, but chooses to roll again. Donald rolls a 1, and must end his turn without scoring. The next player, Alexis, rolls the sequence 4-5-3-5-5, after which she chooses to hold, and adds her turn total of 22 points to her score.</p>
+          </p>
+      </div>
+      <div class="overlay hidden"></div>
         <!-- Player-1 -->
       <section class="player player--0 player--active">
         <h2 class="name" id="name--0">Player 1</h2>
@@ -30,6 +48,10 @@
       </section>
 
       <img src="assets/img/dice-5.png" alt="Playing dice" class="dice" />
+      <div class="tooltip">
+        <button class="btn btn--user_manual">ℹ️</button>
+        <span class="tooltiptext">User Manual</span>
+      </div>
       <button class="btn btn--new">🔄 New game</button>
       <button class="btn btn--roll">🎲 Roll dice</button>
       <button class="btn btn--hold">📥 Hold</button>

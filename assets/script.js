@@ -1,4 +1,9 @@
 "use strict";
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+const btnCloseModal = document.querySelector('.close-modal');
+const btnOpenModal = document.querySelector('.btn--user_manual');
+
 const player0El = document.querySelector(".player--0");
 const player1El = document.querySelector(".player--1");
 const score0El = document.getElementById("score--0");
@@ -10,6 +15,34 @@ const diceEl = document.querySelector(".dice");
 const btnNew = document.querySelector(".btn--new");
 const btnRoll = document.querySelector(".btn--roll");
 const btnHold = document.querySelector(".btn--hold");
+
+
+const dice_rolling_audio = new Audio('assets/audio/dice_roll_audio.wav');
+const winning_audio = new Audio('assets/audio/winning.wav');
+const transition_audio = new Audio('assets/audio/transition.wav');
+const new_game_audio = new Audio('assets/audio/new_game.wav');
+
+// Code for mModal window
+const openModal = function(){
+  modal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+}
+
+const closeModal = function(){
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
+}
+
+btnOpenModal.addEventListener('click',openModal);
+btnCloseModal.addEventListener('click',closeModal);
+overlay.addEventListener('click',closeModal);
+
+document.addEventListener('keydown',function(e){
+  if(e.key === 'Escape' && !modal.classList.contains('hidden')){
+    closeModal();
+  }
+});
+
 
 // Starting conditions
 score0El.textContent = 0;
@@ -28,6 +61,9 @@ const switchPlayer = function () {
 
   player0El.classList.toggle("player--active");
   player1El.classList.toggle("player--active");
+
+  transition_audio.volume = 0.2;
+  transition_audio.play();
 };
 
 // Rolling dice functionality
@@ -39,7 +75,8 @@ btnRoll.addEventListener("click", function () {
     // 2. Display dice
     diceEl.classList.remove("hidden");
     diceEl.src = `assets/img/dice-${dice}.png`;
-
+    dice_rolling_audio.volume = 0.4;
+    dice_rolling_audio.play();
     // 3. Check for rolled 1: if true, switch to next player
     if (dice != 1) {
       // add dice to current score
@@ -63,6 +100,8 @@ btnHold.addEventListener("click", function () {
     // 2. Check if player's score is >=100
     if (scores[activePlayer] >= 100) {
       // Finish the game
+      winning_audio.volume = 0.5;
+      winning_audio.play();
       playing = false;
       diceEl.classList.add('hidden');
       document
@@ -96,7 +135,9 @@ const resetGame = function(){
   player1El.classList.remove('player--winner');
   player0El.classList.add('player--active');
   player1El.classList.remove('player--active');
-  
+
+  new_game_audio.volume = 0.3;
+  new_game_audio.play();
 }
 
 // New Game button functionality
