@@ -318,16 +318,14 @@ main {
       width: 90%; 
       font-weight: 600;
   }
-
+::-webkit-scrollbar{
+  width: 5px;
+}
   .modal h1{
       font-weight:bold;
       font-size: 3rem;
   }
-  ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; /* make scrollbar transparent */
-    }
-
+  
   .player {
     width: 50%;
   }
@@ -349,6 +347,9 @@ main {
     font-size: 1rem;
   }
 
+  .btn--user_manual{
+    top: 3rem;
+  }
   .dice {
     height: 6rem;
     top: 20rem;
